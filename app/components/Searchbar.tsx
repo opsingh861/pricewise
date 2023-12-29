@@ -33,7 +33,7 @@ const Searchbar = () => {
         const isValidLink = isValidAmazonProductURL(searchPrompt);
 
         if (!isValidLink) return alert('Please provide a valid Amazon link')
-        alert('Valid link')
+        // alert('Valid link')
         try {
             setIsLoading(true);
 
