@@ -1,6 +1,10 @@
 export type User = {
     email: string;
   };
+
+  export type PriceHistoryItem = {
+    price: number;
+  };
   
   export type Product = {
     _id?: string;
@@ -10,7 +14,7 @@ export type User = {
     title: string;
     currentPrice: number;
     originalPrice: number;
-    // priceHistory: PriceHistoryItem[] | [];
+    priceHistory: PriceHistoryItem[] | [];
     highestPrice: number;
     lowestPrice: number;
     averagePrice: number;
