@@ -1,8 +1,13 @@
 import Image from 'next/image'
 import Searchbar from './components/Searchbar'
 import HeroCarousel from './components/HeroCarousel'
+import { getAllProducts } from '@/lib/actions'
+import ProductCard from './components/ProductCard'
+import { Product } from '@/types'
 
-export default function Home() {
+export default async function Home() {
+  const products = await getAllProducts()
+  // console.log(products)
   return (
     <>
       <section className='px-6 md:px-20 py-24'>
@@ -28,95 +33,16 @@ export default function Home() {
             </p>
             <Searchbar />
           </div>
-        <HeroCarousel />
+          <HeroCarousel />
         </div>
       </section>
       <section className="trending-section">
         <h2 className="section-text">Trending</h2>
 
         <div className="flex flex-wrap gap-x-8 gap-y-16">
-          <div className="trending-card">
-            <div className="trending-card-img">
-              <Image
-                src="/assets/images/iphone.png"
-                width={300}
-                height={300}
-                alt="iphone"
-              />
-            </div>
-            <div className="trending-card-info">
-              <h3 className="trending-card-title">
-                Apple iPhone 12 Pro Max
-              </h3>
-              <p className="trending-card-price">
-                $999.00
-              </p>
-            </div>
-          </div>
-          <div className="trending-card">
-            <div className="trending-card-img">
-              <Image
-                src="/assets/images/iphone.png"
-                width={300}
-                height={300}
-                alt="iphone"
-              />
-            </div>
-            <div className="trending-card-info">
-              <h3 className="trending-card-title">
-                Apple iPhone 12 Pro Max
-              </h3>
-              <p className="trending-card-price">
-                $999.00
-              </p>
-            </div>
-          </div>
-          <div className="trending-card">
-            <div className="trending-card-img">
-              <Image
-                src="/assets/images/iphone.png"
-                width={300}
-                height={300}
-                alt="iphone"
-              />
-            </div>
-            <div className="trending-card-info">
-              <h3 className="trending-card-title">
-                Apple iPhone 12 Pro Max
-              </h3>
-              <p className="trending-card-price">
-                $999.00
-              </p>
-            </div>
-          </div>
-          <div className="trending-card">
-            <div className="trending-card-img">
-              <Image
-                src="/assets/images/iphone.png"
-                width={300}
-                height={300}
-                alt="iphone"
-              />
-            </div>
-            <div className="trending-card-info">
-              <h3 className="trending-card-title">
-                Apple iPhone 12 Pro Max
-              </h3>
-              <p className="trending-card-price">
-                $999.00
-              </p>
-            </div>
-          </div>
-          <div className="trending-card">
-            <div className="trending-card-img">
-              <Image
-                src="/assets/images/iphone.png"
-                width={300}
-                height={300}
-                alt="iphone"
-              />
-            </div>
-          </div>
+          {products?.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))}
         </div>
       </section>
     </>
