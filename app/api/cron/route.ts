@@ -7,7 +7,7 @@ import { scrapeAmazonProduct } from "@/lib/scraper";
 import { generateEmailBody, sendEmail } from "@/lib/nodemailer";
 import { getAveragePrice, getEmailNotifType, getHighestPrice, getLowestPrice } from "@/lib/util";
 
-export const maxDuration = 60; // This function can run for a maximum of 300 seconds
+export const maxDuration = 10; // i have set it for 10 seconds as hobby plan supports only 10 seconds. Now i have to run it from here manually
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
