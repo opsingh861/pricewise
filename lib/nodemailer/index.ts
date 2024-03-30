@@ -14,7 +14,7 @@ const Notification = {
 export async function generateEmailBody(
   product: EmailProductInfo,
   type: NotificationType
-  ) {
+) {
   const THRESHOLD_PERCENTAGE = 40;
   // Shorten the product title
   const shortenedTitle =
@@ -101,8 +101,8 @@ export const sendEmail = async (emailContent: EmailContent, sendTo: string[]) =>
   }
 
   transporter.sendMail(mailOptions, (error: any, info: any) => {
-    if(error) return console.log(error);
-    
+    if (error) return console.log(error);
+
     console.log('Email sent: ', info);
   })
 }
